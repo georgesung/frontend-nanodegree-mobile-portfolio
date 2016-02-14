@@ -17,7 +17,7 @@ Below are the optimizations I made:
 * In index.html, inlined the latin 400/700 fonts of Open Sans
   * For the web font, notice we only use the *latin* character set, for normal (font-weight: 400) and bold (font-weight: 700)
   * When downloading the original web font, we downloaded all possible character sets unnecessarily (e.g. extended Latin, Greek, Vietnamese, etc.)
-* Minified index.html
+* Minified index.html using http://www.willpeavy.com/minifier/
   * Saved original un-minified version at index_full.html, for reference
 
 ## Original text
