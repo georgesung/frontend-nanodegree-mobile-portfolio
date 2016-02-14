@@ -1,3 +1,26 @@
+## My text
+## Website Performance Optimization portfolio project
+
+####Part 1: Optimize PageSpeed Insights score for index.html
+
+**Note:** I minified index.html. For reference, I saved the un-minified version at index_full.html
+
+Below are the optimizations I made:
+* Resized views/images/pizzeria.jpg such that the image width is 100px
+  * In index.html, this images width is hard-coded to display at 100px width, so no need to download the original image with size 2048 x 1536
+  * Image went from 2.25 MB to 22.8 KB, 99x size reduction
+* Per PageSpeed Insight's recommendation, executed lossless image compression on images/pizzeria.jpg and img/profilepic.jpg
+  * Used free online image compression service from Kraken.io
+  * File size of images/pizzeria.jpg and img/profilepic.jpg reduced to 5.97 KB and 4.62 KB, respectively
+* In index.html, marked Google Analytics JS code to load asynchronously, so it is not render-blocking
+* In index.html, inlined css/style.css
+* In index.html, inlined the latin 400/700 fonts of Open Sans
+  * For the web font, notice we only use the *latin* character set, for normal (font-weight: 400) and bold (font-weight: 700)
+  * When downloading the original web font, we downloaded all possible character sets unnecessarily (e.g. extended Latin, Greek, Vietnamese, etc.)
+* Minified index.html
+  * Saved original un-minified version at index_full.html, for reference
+
+## Original text
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
