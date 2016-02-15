@@ -424,8 +424,8 @@ var resizePizzas = function(size) {
    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
     var oldWidth = elem.offsetWidth;
-    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
     var oldSize = oldWidth / windowWidth;
+    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
 
     // Optional TODO: change to 3 sizes? no more xl?
     // Changes the slider value to a percent width
@@ -449,11 +449,32 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
+/*
+  // gsung change: Just make the exact same update to all elements of class randomPizzaContainer
+  // gsung change. TODO: Find right terminology
+  // Saving document.querySelectorAll(".randomPizzaContainer") to local variable to prevent redundant querying of ...
+  // Ditto for windowWidth
+  var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
+  var mylength = randomPizzaContainer.length;
+
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    for (var i = 0; i < mylength; i++) {
+      var dx = determineDx(randomPizzaContainer[i], size, windowWidth);
+      var newwidth = (randomPizzaContainer[i].offsetWidth + dx) + 'px';
+      randomPizzaContainer[i].style.width = newwidth;
+    }
+  }
+*/
+  // gsung change: Here I am doing the required document queries/reads first, then batch write to DOM
+  function changePizzaSizes(size) {
+    // All pizza container widths are the same, so just calculate newwidth once
+    var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
+    var dx = determineDx(randomPizzaContainer[0], size);
+    var newwidth = (randomPizzaContainer[0].offsetWidth + dx) + 'px';
+    var length = randomPizzaContainer.length;
+
+    for (var i = 0; i < length; i++) {
+      randomPizzaContainer[i].style.width = newwidth;
     }
   }
 
@@ -503,8 +524,13 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
+
+  // gsung change. TODO: Find the correct terminology of that phase in redering pipeline that you avoid...
+  // Save document.body.scrollTop to a local variable to prevent redundant querying of ...
+  var scrollTop = document.body.scrollTop;
+
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    var phase = Math.sin((scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
