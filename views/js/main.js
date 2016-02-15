@@ -449,31 +449,15 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
-/*
-  // gsung change: Just make the exact same update to all elements of class randomPizzaContainer
-  // gsung change. TODO: Find right terminology
-  // Saving document.querySelectorAll(".randomPizzaContainer") to local variable to prevent redundant querying of ...
-  // Ditto for windowWidth
-  var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
-  var mylength = randomPizzaContainer.length;
-
-  function changePizzaSizes(size) {
-    for (var i = 0; i < mylength; i++) {
-      var dx = determineDx(randomPizzaContainer[i], size, windowWidth);
-      var newwidth = (randomPizzaContainer[i].offsetWidth + dx) + 'px';
-      randomPizzaContainer[i].style.width = newwidth;
-    }
-  }
-*/
-  // gsung change: Here I am doing the required document queries/reads first, then batch write to DOM
   function changePizzaSizes(size) {
     // All pizza container widths are the same, so just calculate newwidth once
     var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
     var dx = determineDx(randomPizzaContainer[0], size);
     var newwidth = (randomPizzaContainer[0].offsetWidth + dx) + 'px';
-    var length = randomPizzaContainer.length;
 
-    for (var i = 0; i < length; i++) {
+    // Update widths of all pizza images
+    // Note no document reads are in between these writes, thus preventing layout thrashing
+    for (var i = 0; i < randomPizzaContainer.length; i++) {
       randomPizzaContainer[i].style.width = newwidth;
     }
   }
@@ -525,10 +509,10 @@ function updatePositions() {
 
   var items = document.querySelectorAll('.mover');
 
-  // gsung change. TODO: Find the correct terminology of that phase in redering pipeline that you avoid...
-  // Save document.body.scrollTop to a local variable to prevent redundant querying of ...
+  // Save document.body.scrollTop to a local variable
   var scrollTop = document.body.scrollTop;
 
+  // Using local variable scrollTop inside this loop to prevent layout thrashing
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';

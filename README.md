@@ -1,37 +1,14 @@
-## My text
 ## Website Performance Optimization portfolio project
 
-####Part 1: Optimize PageSpeed Insights score for index.html
+This is a page speed optimization project, part of Udacity's Front-End Developer Nanodegree program. For the original README and source files provided by Udacity, please refer to the GitHub repo from which this repo was forked.
 
-**Note:** I minified index.html. For reference, I saved the un-minified version at index_full.html
+Below is the documentation for parts 1 and 2 of this project.
 
-Below are the optimizations I made:
-* Resized views/images/pizzeria.jpg such that the image width is 100px
-  * In index.html, this images width is hard-coded to display at 100px width, so no need to download the original image with size 2048 x 1536
-  * Image went from 2.25 MB to 22.8 KB, 99x size reduction
-* Per PageSpeed Insight's recommendation, executed lossless image compression on images/pizzeria.jpg and img/profilepic.jpg
-  * Used free online image compression service from Kraken.io
-  * File size of images/pizzeria.jpg and img/profilepic.jpg reduced to 5.97 KB and 4.62 KB, respectively
-* In index.html, marked Google Analytics JS code to load asynchronously, so it is not render-blocking
-* In index.html, inlined css/style.css
-* In index.html, inlined the latin 400/700 fonts of Open Sans
-  * For the web font, notice we only use the *latin* character set, for normal (font-weight: 400) and bold (font-weight: 700)
-  * When downloading the original web font, we downloaded all possible character sets unnecessarily (e.g. extended Latin, Greek, Vietnamese, etc.)
-* Minified index.html using http://www.willpeavy.com/minifier/
-  * Saved original un-minified version at index_full.html, for reference
+#### Part 1: Optimize PageSpeed Insights score for index.html
 
-## Original text
-## Website Performance Optimization portfolio project
+In this part of the project, I optimized index.html. For the original source code and resource files, please refer to the original Udacity project repo.
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
-
-To get started, check out the repository, inspect the code,
-
-### Getting started
-
-####Part 1: Optimize PageSpeed Insights score for index.html
-
-Some useful tips to help you get started:
+##### How to run this application
 
 1. Check out the repository
 1. To inspect the site on your phone, you can run a local server
@@ -51,46 +28,41 @@ Some useful tips to help you get started:
 
 1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
 
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
+##### Optimizations that I made
 
-####Part 2: Optimize Frames per Second in pizza.html
+**Note:** I minified index.html. For reference, I saved the un-minified version at index_full.html
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+* Resized views/images/pizzeria.jpg such that the image width is 100px
+  * In index.html, this images width is hard-coded to display at 100px width, so no need to download the original image with size 2048 x 1536
+  * Image went from 2.25 MB to 22.8 KB, 99x size reduction
+* Per PageSpeed Insight's recommendation, executed lossless image compression on images/pizzeria.jpg and img/profilepic.jpg
+  * Used free online image compression service from Kraken.io
+  * File size of images/pizzeria.jpg and img/profilepic.jpg reduced to 5.97 KB and 4.62 KB, respectively
+* In index.html, marked Google Analytics JS code to load asynchronously, so it is not render-blocking
+* In index.html, inlined css/style.css
+* In index.html, inlined the latin 400/700 fonts of Open Sans
+  * For the web font, notice we only use the *latin* character set, for normal (font-weight: 400) and bold (font-weight: 700)
+  * When downloading the original web font, we downloaded all possible character sets unnecessarily (e.g. extended Latin, Greek, Vietnamese, etc.)
+* Minified index.html using http://www.willpeavy.com/minifier/
+  * Saved original un-minified version at index_full.html, for reference
 
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
+#### Part 2: Optimize Frames per Second in pizza.html
 
-### Optimization Tips and Tricks
-* [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
-* [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
-* [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
-* [Avoiding Rendering Blocking CSS](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html "render blocking css")
-* [Optimizing JavaScript](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/adding-interactivity-with-javascript.html "javascript")
-* [Measuring with Navigation Timing](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp.html "nav timing api"). We didn't cover the Navigation Timing API in the first two lessons but it's an incredibly useful tool for automated page profiling. I highly recommend reading.
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/eliminate-downloads.html">The fewer the downloads, the better</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html">Reduce the size of text</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
+In part 2 of this project, I optimized views/js/main.js, such that views/pizza.html runs at 60 frames per second (fps) or higher, and the pizza container resizing operations complete in less than 5 milliseconds (ms).
 
-### Customization with Bootstrap
-The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.
+##### Optimizations that I made
 
-* <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
-* <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
+*All optimizations described below were implemented by modifying views/js/main.js*
 
-### Sample Portfolios
+Optimizations to allow 60 fps scrolling of views/pizza.html:
+* Saved document.body.scrollTop to a local variable, and used this local variable in the subsequent for-loop
+  * In the for loop that iterates through all moving background pizzas, we don't have to read from the document again, since we can now read from our local variable instead
+  * Repeatedly reading from the document then writing to it causes layout thrashing, which we want to avoid
 
-Feeling uninspired by the portfolio? Here's a list of cool portfolios I found after a few minutes of Googling.
-
-* <a href="http://www.reddit.com/r/webdev/comments/280qkr/would_anybody_like_to_post_their_portfolio_site/">A great discussion about portfolios on reddit</a>
-* <a href="http://ianlunn.co.uk/">http://ianlunn.co.uk/</a>
-* <a href="http://www.adhamdannaway.com/portfolio">http://www.adhamdannaway.com/portfolio</a>
-* <a href="http://www.timboelaars.nl/">http://www.timboelaars.nl/</a>
-* <a href="http://futoryan.prosite.com/">http://futoryan.prosite.com/</a>
-* <a href="http://playonpixels.prosite.com/21591/projects">http://playonpixels.prosite.com/21591/projects</a>
-* <a href="http://colintrenter.prosite.com/">http://colintrenter.prosite.com/</a>
-* <a href="http://calebmorris.prosite.com/">http://calebmorris.prosite.com/</a>
-* <a href="http://www.cullywright.com/">http://www.cullywright.com/</a>
-* <a href="http://yourjustlucky.com/">http://yourjustlucky.com/</a>
-* <a href="http://nicoledominguez.com/portfolio/">http://nicoledominguez.com/portfolio/</a>
-* <a href="http://www.roxannecook.com/">http://www.roxannecook.com/</a>
-* <a href="http://www.84colors.com/portfolio.html">http://www.84colors.com/portfolio.html</a>
+Optimizations to reduce time to resize pizza containers to less than 5 ms:
+* Only calculate newwidth once
+  * Originally, we were calculating newwidth everytime for each pizza container. However, for every pizza resize operation, the newwidth value is the same for each pizza container.
+  * Thus, we only need to calculate newwidth once and save the value in a local variable, which saves us many document reads and calculations
+* Saved the number of total pizza containers (i.e. document.querySelectorAll(".randomPizzaContainer").length) to a local variable, so the for-loop that uses this value does not have to read from the document for each iteration
+* From the above modifications, the for-loop to iterate through all pizza containers now only includes document writes
+  * No more document reads in this for-loop as before, which was causing layout thrashing
